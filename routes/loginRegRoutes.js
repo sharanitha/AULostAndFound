@@ -5,22 +5,17 @@ const CategoryModel = require("../model/category_model")
 //controller
 const AccountController = require('../controller/account_controller')
 const AdminController = require('../controller/admin_controller')
-const CategoryController = require('../controller/category_controller')
 let signupVerify = require('../controller/account_verify')
 
 //middleware
 let user_session = require("../middleware/logged-status");
 let signup_handler = require("../middleware/signup_route_handler")
-// let auth = require("../middleware/login")
-// let admin_session = require("../middleware/admin_session")
-// const loggedStatus = require('../middleware/logged-status')
 
 let clear = require("../util/clear");
 
 module.exports = (() => {
     'use strict';
     let app = require('express').Router();
-    // let connection = require('../model/connection')
 
     app.get('/', asyncHandler(async function (request, response) {
         response.cookie('signup', { both: false, email: false, password: false }, { signed: true })
@@ -120,64 +115,6 @@ module.exports = (() => {
 
         response.render('home', { info, ad })
     });
-
-
-    //profile
-    app.get("/users", user_session,  asyncHandler(async (request, response) => {
-        let uname =  await AccountController.getUsernameById(request.session.user_id)
-        console.log(uname)
-        response.redirect(`/users/${uname}`)
-
-    }))
-
-    app.post("/users", user_session,  asyncHandler(async (request, response) => {
-        let uname =  await AccountController.getUsernameById(request.session.user_id)
-        response.redirect(307, `/users/${uname}`)
-
-    }))
-
-    // let getProfileId = require('../model/get_profile_id')
-    // let getProfileData = require('../model/get_profile_data')
-
-    //render profile
-    //create profile
-    app.post("/users/:username", asyncHandler(async (request, response) => {
-        let username = request.params.username;
-        let uname =  await AccountController.getUsernameById(request.session.user_id)
-        // console.log('this stored id is: ', request.session.userID)
-        let tempId = request.session.user_id
-        if (request.session.loggedin && uname === username) {
-            if (tempId) {
-                const profileData = await ProfileController.getProfileData(tempId)
-                // console.log(profileData)
-                response.render('update-profile', { variables: options.selectOption, profileData })
-            }
-        }
-        // response.send("hey")
-    }))
-    app.post("/update", asyncHandler(async (request, response) => {
-        // console.log(request.signedCookies.profile_email)
-        // await ProfileController.createDefault(request.body.email)
-        //to do => switch to useing classes for generating objects
-        let profile_package = {
-            Name: request.body.profile_name,
-            Description: request.body.profile_desc,
-            Department: request.body.department
-        }
-        const userID = request.session.user_id
-        if (profile_package) {
-
-            await ProfileModel.update(profile_package, userID)
-            // newProfile(profile_package)
-        }
-        response.redirect("/users")
-        // response.json(profile_package)
-
-    }))
-    //this is an array of middleware functions that is used for the profile page
-    let userMiddleware = [user_session, AccountController.userExist]
-    app.get("/users/:username", userMiddleware, asyncHandler(async (request, response) => {
-    }))
 
     //this is the log out page /function
     app.get('/logout', user_session, (request, response) => {
