@@ -1,0 +1,15 @@
+doctype html
+include ./header.pug
+body
+    include ./nav.pug
+    .container
+        div(class='jumbotron text-center')
+          .login-form
+          h1 Add Category
+          form(action='addCategory' method='POST' )
+              .input-group.mb-3
+                  input#passwordRetype.form-control(type='text' name='category_name' placeholder='Category Name' required='')
+
+              input(type='submit')
+    include ./bootstrapScript.pug
+    

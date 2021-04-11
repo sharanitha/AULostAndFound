@@ -1,0 +1,34 @@
+{
+  "name": "aulostandfound",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sharanitha/AULostAndFound.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sharanitha/AULostAndFound/issues"
+  },
+  "homepage": "https://github.com/sharanitha/AULostAndFound#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "express-session": "^1.17.1",
+    "mysql": "^2.18.1",
+    "node": "^15.12.0",
+    "nodemon": "^2.0.7",
+    "pug": "^3.0.2"
+  }
+}

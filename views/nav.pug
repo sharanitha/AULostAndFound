@@ -1,0 +1,19 @@
+nav.navbar.navbar-expand-lg.navbar-dark
+  a.navbar-brand(href='/') AU Lost & Found
+  button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarText' aria-controls='navbarText' aria-expanded='false' aria-label='Toggle navigation')
+    span.navbar-toggler-icon
+  #navbarText.collapse.navbar-collapse
+    ul.navbar-nav.mr-auto
+      li.nav-item.active
+        a.nav-link(href='/')
+          | Home 
+          span.sr-only (current)
+      li.nav-item.active
+        a.nav-link(href='/users') Profile
+      if ad
+        include ./admin-nav.pug
+    span.navbar-text
+    a(href="/account")
+      button.btn.btn-outline-light.my-2.my-sm-0.mr-3(type = submit) Settings 
+    a(href="/logout")
+      button.btn.btn-outline-light.my-2.my-sm-0 Log Out

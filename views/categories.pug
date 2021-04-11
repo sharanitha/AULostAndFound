@@ -1,0 +1,17 @@
+doctype html
+include ./header.pug
+body
+    include ./nav.pug
+    .container
+        div(class='jumbotron text-center')
+            h1 Categories
+            hr
+            table.table.table-striped
+                thead
+                    th Category
+                
+                tbody
+                    each member in Group
+                        tr
+                            td=member._name
+    include ./bootstrapScript.pug    

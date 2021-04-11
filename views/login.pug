@@ -1,0 +1,36 @@
+doctype html
+head
+  meta(charset='utf-8')
+  title AU Lost & Found | Login
+  include ./bootstrap.pug
+  style
+    include ../public/css/style.css  
+  include ./navLogin.pug
+body
+  div.container
+    div.row
+      //Section for website description
+      div.col-sm.login
+        h1 AU Lost & Found
+        hr
+        p.white Lost an item? Find it here or report something found
+
+      //Section for login form
+      div.col-sm.login
+        .login-form
+          h1 Sign In
+          form(action='auth' method='POST')
+            if wrongInfo
+                .alert.alert-danger(role='alert') Incorrect email or address
+            .input-group.mb-3
+                input#email.form-control(type='text'  name='email' placeholder='Email' required='')
+                .input-group-append
+                    span#basic-addon2.input-group-text @aurora.edu
+            //- input(type='text' name='username' placeholder='Username' required='')
+            .input-group.mb-3
+                input#password.form-control(type='password' name='password' placeholder='Password' required='')
+            //- input(type='password' name='password' placeholder='Password' required='')
+            input(type='submit')
+            
+          .alert.alert-primary
+            a(href="/signup")  Not a member? sign up now
