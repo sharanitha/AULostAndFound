@@ -2,6 +2,7 @@
 const asyncHandler = require('express-async-handler')
 //model
 const CategoryModel = require("../model/category_model")
+const UserModel = require("../model/accounts_model")
 //controller
 const AccountController = require('../controller/account_controller')
 const AdminController = require('../controller/admin_controller')
